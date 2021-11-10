@@ -1,3 +1,6 @@
+# Author Jacobus Crawford
+# written 11/9/2021
+
 
 def playPhaseTen():
     while(1):
