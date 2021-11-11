@@ -290,6 +290,10 @@ def runTestSuite():
     hands.append([1,1,1,3,4,5,6,8,9,9])
     solutions.append([2])
 
+    #test phase 2 randominzed hand
+    hands.append([6,1,4,1,5,3,8,9,1,9])
+    solutions.append([2])
+
     #test phase 2 and 3 (can't exclusively test 3)
     hands.append([1,1,1,1,2,3,4,5,7,8])
     solutions.append([2,3])
@@ -345,8 +349,8 @@ def runTestSuite():
             print(hand,"PASSED test. Solution",testSolution,"matched\n")
             passed += 1
         else:
-            print(hand,"FAILED test.)
-            print(Solution",testSolution,"did not match expected",solution,"\n")
+            print(hand,"FAILED test.")
+            print("Solution",testSolution,"did not match expected",solution,"\n")
             failed += 1
             
         i += 1
