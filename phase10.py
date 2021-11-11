@@ -5,12 +5,21 @@
 def playPhaseTen():
     while(1):
         hand = getInput()
-        if(len(hand) < 10): #should only happen with quit
-            return
+        if(len(hand) < 10): #should only happen with quit or test
+            if(hand[0] == "quit"):
+                return
+            elif(hand[0] == "test"):
+                runTestSuite() #run the test suite then go back to asking for input
+                continue
         
         #print(hand)
         
-        getPhases(hand)
+        phasesMet = getPhases(hand)
+
+        if(len(phasesMet) == 0):
+            print("The hand",hand,"meets no phases. Try again.\n\n")
+        else:
+            print("The hand ",hand," meets phases ",phasesMet,". Well done!\n\n", sep = "")
         
         
     
@@ -19,7 +28,7 @@ def getInput():
     done = False
     while(not done):
         #get the user input
-        hand = input("Please enter the ten cards of the hand with a space inbetween each (put quit as the first to exit)").split()
+        hand = input("Please enter the ten cards of the hand with a space inbetween each (type quit as the first to exit)").split()
 
         if(len(hand) == 0):
             print("Hand only has no cards. Please enter 10 cards.\n")
@@ -27,6 +36,9 @@ def getInput():
         
         if(hand[0].lower() == "quit" or hand[0].lower() == "q"):
             return ["quit"] #tells the program to quit as invalid numebr of items
+
+        if(hand[0].lower() == "test" or hand[0].lower() == "t"):
+            return ["test"] #tells the program to run the test suite
 
         #check if they gave us the right number of cards
         handLen = len(hand)
@@ -112,10 +124,7 @@ def getPhases(hand):
     if(meetsSetPhase(hand,5,3)):
         phasesMet.append(10)
 
-    if(len(phasesMet) == 0):
-        print("The hand",hand,"meets no phases. Try again.\n\n")
-    else:
-        print("The hand ",hand," meets phases ",phasesMet,". Well done!\n\n", sep = "")
+    return phasesMet
 
     
 
@@ -258,5 +267,95 @@ def hasValidSet(hand,setNum):
     #didn't find a set
     return []
 
+
+def runTestSuite():
+    hands = []
+    solutions = []
+
+    #start hand/solution pairs
+
+    #test nothing
+    hands.append([1,3,4,6,7,9,10,1,12,3])
+    solutions.append([])
+
+    #test that the 1 cannot be used in both the set and run
+    hands.append([1,1,1,2,3,4,6,8,10,12])
+    solutions.append([])
+
+    #test phase 1
+    hands.append([1,1,1,2,2,2,3,3,4,4])
+    solutions.append([1])
+
+    #test phase 2
+    hands.append([1,1,1,3,4,5,6,8,9,9])
+    solutions.append([2])
+
+    #test phase 2 and 3 (can't exclusively test 3)
+    hands.append([1,1,1,1,2,3,4,5,7,8])
+    solutions.append([2,3])
+
+    #test phase 4
+    hands.append([1,2,3,4,5,6,7,9,9,10])
+    solutions.append([4])
+
+    #test phase 4 and 5 (can't exclusively test 5)
+    hands.append([1,2,3,4,5,6,7,8,10,10])
+    solutions.append([4,5])
+
+    #test phase 4, 5, and 6 (can't exclusively test 6)
+    hands.append([1,2,3,4,5,6,7,8,9,11])
+    solutions.append([4,5,6])
+
+    #test phase 1 and 7 (can't exclusively test 7)
+    hands.append([1,1,1,1,2,2,2,2,4,4])
+    solutions.append([1,7])
+
+    #test phase 9
+    hands.append([1,1,1,1,1,2,2,4,6,8])
+    solutions.append([9])
+
+    #test phase 1, 9, and 10 (can't exclusively test 10)
+    hands.append([1,1,1,1,1,2,2,2,4,6])
+    solutions.append([1,9,10])
+
+    #test given test case
+    hands.append([1,2,3,4,5,6,7,8,8,8])
+    solutions.append([2,4,5])
+
+    #test
+    #hands.append([])
+    #solutions.append([])
+
+    #end hand/solution pairs
+
+    print("\n")
+    
+    i = 0
+    passed = 0
+    failed = 0
+    while i < len(hands):
+        hand = hands[i]
+        solution = solutions[i]
+
+        print("testing hand",i+1)
+
+        testSolution = getPhases(hand)
+
+        if(testSolution == solution):
+            print(hand,"PASSED test. Solution",testSolution,"matched\n")
+            passed += 1
+        else:
+            print(hand,"FAILED test.)
+            print(Solution",testSolution,"did not match expected",solution,"\n")
+            failed += 1
+            
+        i += 1
+
+    print(i,"tests run")
+    print("PASSED ",passed," / ",i,sep="")
+    print("FAILED ",failed," / ",i,sep="")
+    print("\n\n")
+
+    
 
 playPhaseTen()
