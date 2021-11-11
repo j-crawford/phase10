@@ -277,30 +277,61 @@ def hasValidSet(hand,setNum):
 
 
 def runTestSuite():
+    run = 0;
+    passed = 0;
+    failed = 0;
+    print("\nTest Suite Starting ---------------------------------------------\n")
+    
     print("\nRunning input tests -------------------------------------------\n")
-    runInputTests()
+    i,j,k = runInputTests()
+    run += i
+    passed += j
+    failed += k
     print("Finished input tests ------------------------------------------\n\n")
 
     print("\nRunning set tests ---------------------------------------------\n")
-    runSetTests()
+    i,j,k = runSetTests()
+    run += i
+    passed += j
+    failed += k
     print("Finished set tests --------------------------------------------\n\n")
 
     print("\nRunning run tests ---------------------------------------------\n")
-    runRunTests()
+    i,j,k = runRunTests()
+    run += i
+    passed += j
+    failed += k
     print("Finished run tests --------------------------------------------\n\n")
 
     print("\nRunning set phase tests ---------------------------------------\n")
-    runSetPhaseTests()
+    i,j,k = runSetPhaseTests()
+    run += i
+    passed += j
+    failed += k
     print("Finished set phase tests --------------------------------------\n\n")
 
     print("\nRunning run phase tests ---------------------------------------\n")
-    runRunPhaseTests()
+    i,j,k = runRunPhaseTests()
+    run += i
+    passed += j
+    failed += k
     print("Finished run phase tests --------------------------------------\n\n")
     
     print("\nRunning play tests --------------------------------------------\n")
-    runPlayTests()
+    i,j,k = runPlayTests()
+    run += i
+    passed += j
+    failed += k
     print("Finished play tests -------------------------------------------\n\n")
 
+    print("Test Suite Results ---------------------------------------------\n")
+
+    print("Tests run:",run)
+    print("  PASSED: ",passed," / ",run,sep="")
+    print("  FAILED: ",failed," / ",run,sep="")
+    print("")
+    
+    print("Test Suite Finished -------------------------------------------\n\n")
 
 
 def runInputTests():
@@ -422,10 +453,12 @@ def runInputTests():
             
         i += 1
 
-    print(i,"tests run")
-    print("PASSED ",passed," / ",i,sep="")
-    print("FAILED ",failed," / ",i,sep="")
+    print("Tests run:",i)
+    print("  PASSED ",passed," / ",i,sep="")
+    print("  FAILED ",failed," / ",i,sep="")
     print("")
+
+    return i,passed,failed
 
 
 
@@ -487,10 +520,14 @@ def runSetTests():
             
         i += 1
 
-    print(i,"tests run")
-    print("PASSED ",passed," / ",i,sep="")
-    print("FAILED ",failed," / ",i,sep="")
+    print("Tests run:",i)
+    print("  PASSED ",passed," / ",i,sep="")
+    print("  FAILED ",failed," / ",i,sep="")
     print("")
+
+    return i,passed,failed
+
+
 
 
 def runRunTests():
@@ -551,10 +588,14 @@ def runRunTests():
             
         i += 1
 
-    print(i,"tests run")
-    print("PASSED ",passed," / ",i,sep="")
-    print("FAILED ",failed," / ",i,sep="")
+    print("Tests run:",i)
+    print("  PASSED ",passed," / ",i,sep="")
+    print("  FAILED ",failed," / ",i,sep="")
     print("")
+
+    return i,passed,failed
+
+
 
 
 
@@ -626,10 +667,13 @@ def runSetPhaseTests():
             
         i += 1
 
-    print(i,"tests run")
-    print("PASSED ",passed," / ",i,sep="")
-    print("FAILED ",failed," / ",i,sep="")
+    print("Tests run:",i)
+    print("  PASSED ",passed," / ",i,sep="")
+    print("  FAILED ",failed," / ",i,sep="")
     print("")
+
+    return i,passed,failed
+
 
 
 
@@ -707,10 +751,14 @@ def runRunPhaseTests():
             
         i += 1
 
-    print(i,"tests run")
-    print("PASSED ",passed," / ",i,sep="")
-    print("FAILED ",failed," / ",i,sep="")
+    print("Tests run:",i)
+    print("  PASSED ",passed," / ",i,sep="")
+    print("  FAILED ",failed," / ",i,sep="")
     print("")
+
+    return i,passed,failed
+
+
 
 
 
@@ -799,10 +847,12 @@ def runPlayTests():
             
         i += 1
 
-    print(i,"tests run")
-    print("PASSED ",passed," / ",i,sep="")
-    print("FAILED ",failed," / ",i,sep="")
+    print("Tests run:",i)
+    print("  PASSED ",passed," / ",i,sep="")
+    print("  FAILED ",failed," / ",i,sep="")
     print("")
+
+    return i,passed,failed
 
     
 
