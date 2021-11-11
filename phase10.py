@@ -272,65 +272,65 @@ def runTestSuite():
     hands = []
     solutions = []
 
-    #start hand/solution pairs
+    #start hand/solution pairs ---------------------------------------------
 
-    #test nothing
+    #1 test nothing
     hands.append([1,3,4,6,7,9,10,1,12,3])
     solutions.append([])
 
-    #test that the 1 cannot be used in both the set and run
+    #2 test that the 1 cannot be used in both the set and run
     hands.append([1,1,1,2,3,4,6,8,10,12])
     solutions.append([])
 
-    #test phase 1
+    #3 test phase 1
     hands.append([1,1,1,2,2,2,3,3,4,4])
     solutions.append([1])
 
-    #test phase 2
+    #4 test phase 2
     hands.append([1,1,1,3,4,5,6,8,9,9])
     solutions.append([2])
 
-    #test phase 2 randominzed hand
+    #5 test phase 2 randominzed hand
     hands.append([6,1,4,1,5,3,8,9,1,9])
     solutions.append([2])
 
-    #test phase 2 and 3 (can't exclusively test 3)
+    #6 test phase 2 and 3 (can't exclusively test 3)
     hands.append([1,1,1,1,2,3,4,5,7,8])
     solutions.append([2,3])
 
-    #test phase 4
+    #7 test phase 4
     hands.append([1,2,3,4,5,6,7,9,9,10])
     solutions.append([4])
 
-    #test phase 4 and 5 (can't exclusively test 5)
+    #8 test phase 4 and 5 (can't exclusively test 5)
     hands.append([1,2,3,4,5,6,7,8,10,10])
     solutions.append([4,5])
 
-    #test phase 4, 5, and 6 (can't exclusively test 6)
+    #9 test phase 4, 5, and 6 (can't exclusively test 6)
     hands.append([1,2,3,4,5,6,7,8,9,11])
     solutions.append([4,5,6])
 
-    #test phase 1 and 7 (can't exclusively test 7)
+    #10 test phase 1 and 7 (can't exclusively test 7)
     hands.append([1,1,1,1,2,2,2,2,4,4])
     solutions.append([1,7])
 
-    #test phase 9
+    #11 test phase 9
     hands.append([1,1,1,1,1,2,2,4,6,8])
     solutions.append([9])
 
-    #test phase 1, 9, and 10 (can't exclusively test 10)
+    #12 test phase 1, 9, and 10 (can't exclusively test 10)
     hands.append([1,1,1,1,1,2,2,2,4,6])
     solutions.append([1,9,10])
 
-    #test given test case
+    #13 test given test case
     hands.append([1,2,3,4,5,6,7,8,8,8])
     solutions.append([2,4,5])
 
-    #test
+    ## test
     #hands.append([])
     #solutions.append([])
 
-    #end hand/solution pairs
+    #end hand/solution pairs ------------------------------------------------
 
     print("\n")
     
