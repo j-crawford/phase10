@@ -132,8 +132,6 @@ def getPhases(hand):
 #determins if it meets the phase with two sets of firstNum and secondNum
 def meetsSetPhase(hand,firstNum,secondNum):
 
-    #print(hand)
-
     #always make sure the first one to run is bigger (or equal)
     if(secondNum > firstNum):
         temp = firstNum
@@ -160,8 +158,6 @@ def meetsSetPhase(hand,firstNum,secondNum):
 #determins if it meets the phase with a run of runnum and a set of setnum
 # a value of 0 means there is no requirement for that value in this phase
 def meetsRunPhase(hand,setNum,runNum):
-
-    #print(hand)
     
     if(runNum > 0): #if we're delaing with something with a run in it
         curHand = hand.copy()
@@ -172,14 +168,12 @@ def meetsRunPhase(hand,setNum,runNum):
             
             if(len(outRun) == 0):
                 return False #there is not a satisfactory run
-            #print(outRun,len(outRun),runNum)
+            
             
             #remove the run from what to consider for the set
             setHand = hand.copy()
             for i in outRun:
                 setHand.remove(i)
-
-            #print(setHand)
 
             outSet = hasValidSet(setHand, setNum)
             if(len(outSet) == setNum):
@@ -224,20 +218,18 @@ def hasValidRun(hand,runNum):
         
         runStart = newHand[i]
         run = range(runStart, runStart + runNum)
-        #print("run",run)
-        #print(runNum)
+        
         j = 0
         found = True
         while j < runNum:
             #check if the hand matches the run
-            #print(newHand[i+j],run[j])
+            
             if(newHand[i + j] != run[j]):
                 found = False
                 break
             j += 1
             
         if(found): #found a valid run
-            #print("retunring")
             return run
         
         #if broken returns to top and tries again
