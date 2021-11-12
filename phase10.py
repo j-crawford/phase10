@@ -202,7 +202,7 @@ def meetsRunPhase(hand,setNum,runNum):
                 if(i > leastRun):
                     curHand.append(i)
 
-            if(len(curHand) > runNum + setNum):
+            if(len(curHand) < runNum):
                 return False #impossible to meet both conditions
             
     else: # just dealing with a set
