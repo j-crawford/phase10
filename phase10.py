@@ -719,6 +719,11 @@ def runRunPhaseTests():
     hands.append([7,1,5,2,1,3,4,1,7,1])
     runNums.append([4,4])
     expectedResults.append(True)
+
+    #8 test edge case where run at end caused error
+    hands.append([1,2,3,4,4,4,7,8,9,10])
+    runNums.append([3,4])
+    expectedResults.append(True)
     
 
     ## test
@@ -819,6 +824,11 @@ def runPlayTests():
     #13 test given test case
     hands.append([1,2,3,4,5,6,7,8,8,8])
     solutions.append([2,4,5])
+
+    #14 test edge case that resulted in error
+    hands.append([1,2,3,4,4,4,7,8,9,10])
+    solutions.append([2])
+    
 
     ## test
     #hands.append([])
